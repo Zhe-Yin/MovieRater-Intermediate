@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.example.movierater_intermediate.databinding.ActivityAddMovieBinding
+import com.example.movierater_intermediate.Movie
 
 class AddMovie : AppCompatActivity() {
     private lateinit var binding: ActivityAddMovieBinding
@@ -25,16 +26,10 @@ class AddMovie : AppCompatActivity() {
             actionbar!!.title = "MovieRater"
             //set back button
             actionbar.setDisplayHomeAsUpEnabled(true)
+
+
+
             setvisibility()
-
-            var m = Movie()
-
-            name.setText(m.title)
-            description.setText(m.desc)
-//            language.setText(m.lang)
-            date.setText(m.date)
-//            below13.setText(m.suitable)
-
             below13.setOnClickListener{
                 setvisibility()
             }
@@ -44,7 +39,7 @@ class AddMovie : AppCompatActivity() {
 
     }
     override fun onSupportNavigateUp(): Boolean {
-        val intent = Intent(this@AddMovie,MovieDetail::class.java)
+        val intent = Intent(this@AddMovie,MainActivity::class.java)
         startActivity(intent)
         return true
     }
@@ -89,6 +84,16 @@ class AddMovie : AppCompatActivity() {
             intent.putExtra("overview",description.text.toString())
             intent.putExtra("language",language.text.toString())
             intent.putExtra("date",date.text.toString())
+//            var m = Movie()
+//            val language_grp:RadioGroup = findViewById(R.id.group_language)
+//            val language_btn = language_grp.checkedRadioButtonId
+//            m.addmovie(name.text.toString(),
+//                description.text.toString(),
+//                language_btn.toString(),
+//                date.text.toString(),
+//                below13.isChecked,
+//                violence.isChecked,
+//                languageused.isChecked)
 
             startActivity(intent)
 

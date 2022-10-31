@@ -111,7 +111,7 @@
             />
 
         <CheckBox
-            android:id="@+id/language"
+            android:id="@+id/language_used"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GitHub/MovieMaker/MovieRater_Intermediate/app/src/main/res/layout/activity_add_movie.xml" value="0.1322463768115942" />
+        <entry key="..\:/GitHub/MovieMaker/MovieRater_Intermediate/app/src/main/res/layout/activity_edit_movie.xml" value="0.16979166666666667" />
+        <entry key="..\:/GitHub/MovieMaker/MovieRater_Intermediate/app/src/main/res/layout/activity_movie_detail.xml" value="0.1322463768115942" />
+        <entry key="..\:/GitHub/MovieMaker/MovieRater_Intermediate/app/src/main/res/menu/addmovie.xml" value="0.234375" />
+        <entry key="..\:/GitHub/MovieMaker/MovieRater_Intermediate/app/src/main/res/menu/editmovie.xml" value="0.234375" />
+        <entry key="..\:/GitHub/MovieMaker/MovieRater_Intermediate/app/src/main/res/menu/main.xml" value="0.234375" />
+        <entry key="..\:/GitHub/MovieMaker/MovieRater_Intermediate/app/src/main/res/menu/moviedetail.xml" value="0.234375" />
         <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/layout/activity_add_movie.xml" value="0.1" />
         <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/layout/activity_edit_movie.xml" value="0.1" />
         <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/layout/activity_main.xml" value="0.16" />

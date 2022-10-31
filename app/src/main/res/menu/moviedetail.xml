@@ -5,7 +5,7 @@
     tools:context=".MovieDetail">
 
     <item
-        android:id="@+id/save"
+        android:id="@+id/edit"
         android:title="Edit"
         app:showAsAction="ifRoom"
         />

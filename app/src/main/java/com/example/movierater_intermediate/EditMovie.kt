@@ -1,13 +1,16 @@
 package com.example.movierater_intermediate
 
 import android.content.Intent
-import android.graphics.Movie
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import com.example.movierater_intermediate.Movie
 import com.example.movierater_intermediate.databinding.ActivityEditMovieBinding
 
 class EditMovie : AppCompatActivity() {
@@ -30,13 +33,29 @@ class EditMovie : AppCompatActivity() {
 
             name.setText(m.title)
             description.setText(m.desc)
-//            language.setText(m.lang)
             date.setText(m.date)
-//            below13.setText(m.suitable)
+            val language_grp = findViewById(R.id.group_language) as RadioGroup
+            val language_button = language_grp.checkedRadioButtonId
+            if(m.language == language_button.toString())
+            {
+                language_grp.checkedRadioButtonId
+            }
+            if (m.below13 == true){
+                below13.isChecked = true
+            }
+            if (m.language_used == true){
+                languageUsed.isChecked == true
+            }
+            if(m.violence == false){
+                violence.isChecked == false
+            }
+
 
             below13.setOnClickListener{
                 setvisibility()
             }
+
+
 
         }
 
@@ -53,8 +72,8 @@ class EditMovie : AppCompatActivity() {
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-        R.id.clear -> {
-            clearall()
+        R.id.save -> {
+            save()
             true
         }
         R.id.cancel -> {
@@ -71,17 +90,6 @@ class EditMovie : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-    private fun clearall(){
-        binding.apply {
-            name.text.clear()
-            description.text.clear()
-            date.text.clear()
-            below13.isChecked = false
-            setvisibility()
-
-        }
-    }
     private  fun setvisibility() {
         binding.apply {
             val linear: LinearLayout = findViewById(R.id.layout_reasons)
@@ -90,6 +98,30 @@ class EditMovie : AppCompatActivity() {
             }else{
                 linear.visibility = View.INVISIBLE
             }
+        }
+    }
+
+    private fun save(){
+        binding.apply {
+            val intent = Intent(this@EditMovie,MovieDetail::class.java)
+            val language_grp:RadioGroup = findViewById(R.id.group_language)
+            val language_button = language_grp.checkedRadioButtonId
+            val language = findViewById(language_button) as RadioButton
+
+            intent.putExtra("title",name.text.toString())
+            intent.putExtra("overview",description.text.toString())
+            intent.putExtra("language",language.text.toString())
+            intent.putExtra("date",date.text.toString())
+            if(below13.isChecked == true){
+                intent.putExtra("below13","No")
+                if(violence.isChecked == true){
+                    intent.putExtra("violence","Violence")
+                }
+                if(languageUsed.isChecked == true){
+                    intent.putExtra("languageused","Languageused")
+                }
+            }
+            startActivity(intent)
         }
     }
 }
