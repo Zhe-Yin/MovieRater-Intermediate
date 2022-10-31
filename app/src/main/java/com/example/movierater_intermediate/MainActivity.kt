@@ -1,6 +1,5 @@
 package com.example.movierater_intermediate
 
-import android.content.ClipData
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,8 +23,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.add_action_button, menu)
-        R.menu.add_action_button
+        menuInflater.inflate(R.menu.main, menu)
+        R.menu.main
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
@@ -37,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun addMovie(){
         binding.apply{
-            val intent = Intent(this@MainActivity, MovieDetail::class.java)
+            val intent = Intent(this@MainActivity, AddMovie::class.java)
             startActivity(intent)
         }
     }

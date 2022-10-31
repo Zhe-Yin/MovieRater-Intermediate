@@ -1,13 +1,9 @@
 package com.example.movierater_intermediate
 
-import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.PopupMenu
 import com.example.movierater_intermediate.databinding.ActivityMovieDetailBinding
 
@@ -34,13 +30,13 @@ class MovieDetail : AppCompatActivity() {
 //                val b = dialogBuilder.create()
 //                b.show()
                 val popup = PopupMenu(this@MovieDetail,reviews)
-                popup.inflate(R.menu.popup_menu)
+                popup.inflate(R.menu.addreview)
 
                 popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
 
                     when (item!!.itemId) {
-                        R.id.header1 -> {
-                            val intent = Intent(this@MovieDetail, AddMovie::class.java)
+                        R.id.addreview -> {
+                            val intent = Intent(this@MovieDetail, Rating::class.java)
                             startActivity(intent)
                         }
 
@@ -50,6 +46,14 @@ class MovieDetail : AppCompatActivity() {
                 })
                 popup.show()
             }
+            val intent = intent
+            title.text = intent.getStringExtra("title")
+            overview.text = intent.getStringExtra("overview")
+            language.text = intent.getStringExtra("language")
+            date.text = intent.getStringExtra("date")
+
+
+            val profileName=intent.getStringExtra("Username")
 
 
         }

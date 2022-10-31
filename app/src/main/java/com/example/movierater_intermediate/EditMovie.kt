@@ -1,21 +1,20 @@
 package com.example.movierater_intermediate
 
 import android.content.Intent
+import android.graphics.Movie
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import com.example.movierater_intermediate.databinding.ActivityAddMovieBinding
+import com.example.movierater_intermediate.databinding.ActivityEditMovieBinding
 
-class AddMovie : AppCompatActivity() {
-    private lateinit var binding: ActivityAddMovieBinding
+class EditMovie : AppCompatActivity() {
+    private lateinit var binding: ActivityEditMovieBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddMovieBinding.inflate(layoutInflater)
+        binding = ActivityEditMovieBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         binding.apply{
@@ -44,13 +43,13 @@ class AddMovie : AppCompatActivity() {
 
     }
     override fun onSupportNavigateUp(): Boolean {
-        val intent = Intent(this@AddMovie,MovieDetail::class.java)
+        val intent = Intent(this@EditMovie,MovieDetail::class.java)
         startActivity(intent)
         return true
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.addmovie, menu)
-
+        menuInflater.inflate(R.menu.editmovie, menu)
+        R.menu.editmovie
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
@@ -58,15 +57,20 @@ class AddMovie : AppCompatActivity() {
             clearall()
             true
         }
-        R.id.addmovie ->{
-            addmovie()
+        R.id.cancel -> {
+            cancel()
             true
         }
         else -> super.onOptionsItemSelected(item)
 
 
     }
-
+    private fun cancel(){
+        binding.apply{
+            val intent = Intent(this@EditMovie, MovieDetail::class.java)
+            startActivity(intent)
+        }
+    }
 
     private fun clearall(){
         binding.apply {
@@ -77,26 +81,10 @@ class AddMovie : AppCompatActivity() {
             setvisibility()
 
         }
-        }
-    private fun addmovie(){
-        binding.apply {
-            val intent = Intent(this@AddMovie,MovieDetail::class.java)
-            val language_grp:RadioGroup = findViewById(R.id.group_language)
-            val language_button = language_grp.checkedRadioButtonId
-            val language = findViewById(language_button) as RadioButton
-
-            intent.putExtra("title",name.text.toString())
-            intent.putExtra("overview",description.text.toString())
-            intent.putExtra("language",language.text.toString())
-            intent.putExtra("date",date.text.toString())
-
-            startActivity(intent)
-
-        }
     }
     private  fun setvisibility() {
         binding.apply {
-            val linear:LinearLayout = findViewById(R.id.layout_reasons)
+            val linear: LinearLayout = findViewById(R.id.layout_reasons)
             if(below13.isChecked){
                 linear.visibility = View.VISIBLE
             }else{
@@ -104,5 +92,4 @@ class AddMovie : AppCompatActivity() {
             }
         }
     }
-
-    }
+}

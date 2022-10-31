@@ -4,12 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/layout/activity_add_movie.xml" value="0.1" />
+        <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/layout/activity_edit_movie.xml" value="0.1" />
         <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/layout/activity_main.xml" value="0.16" />
-        <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/layout/activity_movie_detail.xml" value="0.14" />
+        <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/layout/activity_movie_detail.xml" value="0.22" />
+        <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/layout/activity_rating.xml" value="0.33" />
         <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/layout/pop_up_button.xml" value="0.1" />
         <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/layout/popup_menu.xml" value="0.1" />
         <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/menu/add_action_button.xml" value="0.1" />
         <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/menu/addmovie_action_buttons.xml" value="0.404296875" />
+        <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/menu/addmovie_add.xml" value="0.1" />
+        <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/menu/addreview.xml" value="0.1" />
+        <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/menu/moviedetail.xml" value="0.1" />
+        <entry key="..\:/Users/ace/Documents/GitHub/MovieRater_Intermediate/app/src/main/res/menu/popup_menu.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
