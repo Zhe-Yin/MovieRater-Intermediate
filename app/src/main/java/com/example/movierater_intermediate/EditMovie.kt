@@ -27,39 +27,15 @@ class EditMovie : AppCompatActivity() {
             actionbar!!.title = "MovieRater"
             //set back button
             actionbar.setDisplayHomeAsUpEnabled(true)
-            setvisibility()
 
-            var m = Movie()
+            // Update info with Movie Entity Class
+            updateinfo()
 
-            name.setText(m.title)
-            description.setText(m.desc)
-            date.setText(m.date)
-            val language_grp = findViewById(R.id.group_language) as RadioGroup
-            val language_button = language_grp.checkedRadioButtonId
-            if(m.language == language_button.toString())
-            {
-                language_grp.checkedRadioButtonId
-            }
-            if (m.below13 == true){
-                below13.isChecked = true
-            }
-            if (m.language_used == true){
-                languageUsed.isChecked == true
-            }
-            if(m.violence == false){
-                violence.isChecked == false
-            }
-
-
+            // check visibility
             below13.setOnClickListener{
                 setvisibility()
             }
-
-
-
         }
-
-
     }
     override fun onSupportNavigateUp(): Boolean {
         val intent = Intent(this@EditMovie,MovieDetail::class.java)
@@ -81,26 +57,31 @@ class EditMovie : AppCompatActivity() {
             true
         }
         else -> super.onOptionsItemSelected(item)
-
-
     }
-    private fun cancel(){
-        binding.apply{
-            val intent = Intent(this@EditMovie, MovieDetail::class.java)
-            startActivity(intent)
-        }
-    }
-    private  fun setvisibility() {
+    private fun updateinfo(){
         binding.apply {
-            val linear: LinearLayout = findViewById(R.id.layout_reasons)
-            if(below13.isChecked){
-                linear.visibility = View.VISIBLE
-            }else{
-                linear.visibility = View.INVISIBLE
+            var m = Movie()
+
+            name.setText(m.title)
+            description.setText(m.desc)
+            date.setText(m.date)
+            val language_grp = findViewById(R.id.group_language) as RadioGroup
+            val language_button = language_grp.checkedRadioButtonId
+            if(m.language == language_button.toString())
+            {
+                language_grp.checkedRadioButtonId
+            }
+            if (m.below13 == true){
+                below13.isChecked = true
+            }
+            if (m.language_used == true){
+                languageUsed.isChecked == true
+            }
+            if(m.violence == false){
+                violence.isChecked == false
             }
         }
     }
-
     private fun save(){
         binding.apply {
             val intent = Intent(this@EditMovie,MovieDetail::class.java)
@@ -119,4 +100,25 @@ class EditMovie : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    private fun cancel(){
+        binding.apply{
+            save()
+            val intent = Intent(this@EditMovie, MovieDetail::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private  fun setvisibility() {
+        binding.apply {
+            val linear: LinearLayout = findViewById(R.id.layout_reasons)
+            if(below13.isChecked){
+                linear.visibility = View.VISIBLE
+            }else{
+                linear.visibility = View.INVISIBLE
+            }
+        }
+    }
+
+
 }

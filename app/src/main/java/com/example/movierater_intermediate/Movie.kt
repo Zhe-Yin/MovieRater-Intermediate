@@ -10,18 +10,4 @@ class Movie{
     var violence:Boolean = true
     var language_used:Boolean = false
 
-//    fun addmovie(t:String,d1:String,l:String,d2:String,b:Boolean,v:Boolean,lu:Boolean){
-//        title = t
-//        desc = d1
-//        language = l
-//        date = d2
-//        below13 = b
-//        violence = v
-//        language_used = lu
-//
-//
-//    }
-
-
-
 }

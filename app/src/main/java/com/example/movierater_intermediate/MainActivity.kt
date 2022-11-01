@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         //set actionbar title
         actionbar!!.title = "MovieRater"
 
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -33,7 +33,6 @@ class AddMovie : AppCompatActivity() {
 
         }
 
-
     }
     override fun onSupportNavigateUp(): Boolean {
         val intent = Intent(this@AddMovie,MainActivity::class.java)
@@ -86,7 +85,6 @@ class AddMovie : AppCompatActivity() {
             intent.putExtra("violence",violence.isChecked.toString())
             intent.putExtra("languageused",languageused.isChecked.toString())
 
-
             startActivity(intent)
 
         }
@@ -102,4 +100,4 @@ class AddMovie : AppCompatActivity() {
         }
     }
 
-    }
+}

@@ -44,23 +44,6 @@ class MovieDetail : AppCompatActivity() {
                 popup.show()
             }
 
-
-//            var m = Movie()
-//
-//            title.setText(m.title)
-//            overview.setText(m.desc)
-//            date.setText(m.date)
-//            val language_grp = findViewById(R.id.group_language) as RadioGroup
-//            val language_button = language_grp.checkedRadioButtonId
-//            if(m.language == language_button.toString())
-//            {
-//                language_grp.checkedRadioButtonId
-//            }
-//            if (m.below13 == true){
-//                below13.isChecked = true
-//            }
-
-
             val intent = intent
             title.text = intent.getStringExtra("title")
             overview.text = intent.getStringExtra("overview")
@@ -97,12 +80,6 @@ class MovieDetail : AppCompatActivity() {
         R.menu.moviedetail
         return true
     }
-    override fun onSupportNavigateUp(): Boolean {
-        val intent = Intent(this@MovieDetail, MainActivity::class.java)
-        startActivity(intent)
-        return true
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.edit -> {
             val intent = Intent(this@MovieDetail, EditMovie::class.java)
@@ -110,9 +87,14 @@ class MovieDetail : AppCompatActivity() {
             true
         }
         else -> super.onOptionsItemSelected(item)
-
-
     }
+    override fun onSupportNavigateUp(): Boolean {
+        val intent = Intent(this@MovieDetail, MainActivity::class.java)
+        startActivity(intent)
+        return true
+    }
+
+
 
 
 }
