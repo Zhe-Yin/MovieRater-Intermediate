@@ -1,14 +1,15 @@
 package com.example.movierater_intermediate
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ContextMenu
+import android.view.ContextMenu.ContextMenuInfo
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.RadioGroup
-import androidx.appcompat.widget.PopupMenu
+import androidx.appcompat.app.AppCompatActivity
 import com.example.movierater_intermediate.databinding.ActivityMovieDetailBinding
+
 
 class MovieDetail : AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailBinding
@@ -25,24 +26,26 @@ class MovieDetail : AppCompatActivity() {
             //set back button
             actionbar.setDisplayHomeAsUpEnabled(true)
 
-            reviews.setOnClickListener {
-                val popup = PopupMenu(this@MovieDetail,reviews)
-                popup.inflate(R.menu.addreview)
-
-                popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
-
-                    when (item!!.itemId) {
-                        R.id.addreview -> {
-                            val intent = Intent(this@MovieDetail, Rating::class.java)
-                            startActivity(intent)
-                        }
-
-                    }
-
-                    true
-                })
-                popup.show()
-            }
+            registerForContextMenu(reviews);
+//            reviews.setOnLongClickListener {
+//
+//                val popup = PopupMenu(this@MovieDetail,reviews)
+//                popup.inflate(R.menu.addreview)
+//
+//                popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
+//
+//                    when (item!!.itemId) {
+//                        R.id.addreview -> {
+//                            val intent = Intent(this@MovieDetail, Rating::class.java)
+//                            startActivity(intent)
+//                        }
+//
+//                    }
+//                    true
+//                })
+//                popup.show()
+//
+//            }
 
             val intent = intent
             title.text = intent.getStringExtra("title")
@@ -91,6 +94,22 @@ class MovieDetail : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val intent = Intent(this@MovieDetail, MainActivity::class.java)
         startActivity(intent)
+        return true
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu, v: View, menuInfo: ContextMenuInfo?) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        menu.add(0, v.id, 0, "Add Review")
+
+    }
+
+    // menu item select listener
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        if(item.title == "Add Review"){
+            val intent = Intent(this@MovieDetail, Rating::class.java)
+            startActivity(intent)
+        }
+
         return true
     }
 

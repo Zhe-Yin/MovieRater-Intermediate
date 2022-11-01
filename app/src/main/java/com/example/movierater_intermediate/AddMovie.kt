@@ -11,6 +11,9 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.example.movierater_intermediate.databinding.ActivityAddMovieBinding
 import com.example.movierater_intermediate.Movie
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class AddMovie : AppCompatActivity() {
     private lateinit var binding: ActivityAddMovieBinding
@@ -49,14 +52,52 @@ class AddMovie : AppCompatActivity() {
             true
         }
         R.id.addmovie ->{
-            addmovie()
+            validation()
             true
         }
         else -> super.onOptionsItemSelected(item)
 
 
     }
+    private fun validation():Boolean{
+        var haschk = true
+        binding.apply {
 
+            if(name.text.isEmpty()){
+                name.error = "Name is empty"
+                haschk = false
+            }
+            if(description.text.isEmpty()){
+                description.error = "Description is empty"
+                haschk = false
+            }
+            if(date.text.isEmpty()){
+                date.error = "Date is empty"
+                haschk = false
+
+            }else{
+                try{
+//
+                    var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
+                    var formattedDate = date.toString().format(formatter)
+                }catch(e:Exception){
+                    date.error = "Date format is wrong (dd-mm-yyyy)"
+                    haschk = false
+                }
+            }
+            if(below13.isChecked == true){
+                if(violence.isChecked == false && languageused.isChecked == false){
+                    below13.error = "Please check either Violence / Language Used or Both"
+                    haschk = false
+                }
+            }
+            if(haschk == true){
+                addmovie()
+            }
+
+        }
+        return haschk
+    }
 
     private fun clearall(){
         binding.apply {

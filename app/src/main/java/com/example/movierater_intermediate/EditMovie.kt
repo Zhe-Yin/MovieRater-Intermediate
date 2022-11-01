@@ -12,6 +12,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.example.movierater_intermediate.Movie
 import com.example.movierater_intermediate.databinding.ActivityEditMovieBinding
+import java.time.format.DateTimeFormatter
 
 class EditMovie : AppCompatActivity() {
     private lateinit var binding: ActivityEditMovieBinding
@@ -49,7 +50,7 @@ class EditMovie : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.save -> {
-            save()
+            updateinfo()
             true
         }
         R.id.cancel -> {
@@ -75,12 +76,52 @@ class EditMovie : AppCompatActivity() {
                 below13.isChecked = true
             }
             if (m.language_used == true){
-                languageUsed.isChecked == true
+                languageused.isChecked == true
             }
             if(m.violence == false){
                 violence.isChecked == false
             }
         }
+    }
+
+    private fun validation():Boolean{
+        var haschk = true
+        binding.apply {
+
+            if(name.text.isEmpty()){
+                name.error = "Name is empty"
+                haschk = false
+            }
+            if(description.text.isEmpty()){
+                description.error = "Description is empty"
+                haschk = false
+            }
+            if(date.text.isEmpty()){
+                date.error = "Date is empty"
+                haschk = false
+
+            }else{
+                try{
+//
+                    var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
+                    var formattedDate = date.toString().format(formatter)
+                }catch(e:Exception){
+                    date.error = "Date format is wrong (dd-mm-yyyy)"
+                    haschk = false
+                }
+            }
+            if(below13.isChecked == true){
+                if(violence.isChecked == false && languageused.isChecked == false){
+                    below13.error = "Please check either Violence / Language Used or Both"
+                    haschk = false
+                }
+            }
+            if(haschk == true){
+                save()
+            }
+
+        }
+        return haschk
     }
     private fun save(){
         binding.apply {
@@ -95,7 +136,7 @@ class EditMovie : AppCompatActivity() {
             intent.putExtra("date",date.text.toString())
             intent.putExtra("below13",below13.isChecked.toString())
             intent.putExtra("violence",violence.isChecked.toString())
-            intent.putExtra("languageused",languageUsed.isChecked.toString())
+            intent.putExtra("languageused",languageused.isChecked.toString())
 
             startActivity(intent)
         }

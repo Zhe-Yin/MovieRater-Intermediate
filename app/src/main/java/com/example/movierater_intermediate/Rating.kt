@@ -11,6 +11,7 @@ class Rating : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRatingBinding.inflate(layoutInflater)
         val view = binding.root
+        setContentView(view)
         binding.apply{
             //actionbar
             val actionbar = supportActionBar
