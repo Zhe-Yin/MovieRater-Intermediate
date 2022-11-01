@@ -50,7 +50,7 @@ class EditMovie : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.save -> {
-            updateinfo()
+            validation()
             true
         }
         R.id.cancel -> {
