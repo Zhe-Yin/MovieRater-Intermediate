@@ -26,27 +26,10 @@ class MovieDetail : AppCompatActivity() {
             //set back button
             actionbar.setDisplayHomeAsUpEnabled(true)
 
+            // Long press for Review
             registerForContextMenu(reviews);
-//            reviews.setOnLongClickListener {
-//
-//                val popup = PopupMenu(this@MovieDetail,reviews)
-//                popup.inflate(R.menu.addreview)
-//
-//                popup.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item: MenuItem? ->
-//
-//                    when (item!!.itemId) {
-//                        R.id.addreview -> {
-//                            val intent = Intent(this@MovieDetail, Rating::class.java)
-//                            startActivity(intent)
-//                        }
-//
-//                    }
-//                    true
-//                })
-//                popup.show()
-//
-//            }
 
+            // Info retrieve from EditMovie / AddMovie after intent
             val intent = intent
             title.text = intent.getStringExtra("title")
             overview.text = intent.getStringExtra("overview")
@@ -78,11 +61,15 @@ class MovieDetail : AppCompatActivity() {
 
 
     }
+
+    // Menu
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.moviedetail, menu)
         R.menu.moviedetail
         return true
     }
+
+    // Items in Menu select listener
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.edit -> {
             val intent = Intent(this@MovieDetail, EditMovie::class.java)
@@ -91,19 +78,22 @@ class MovieDetail : AppCompatActivity() {
         }
         else -> super.onOptionsItemSelected(item)
     }
+
+    // Navigate to Main Page
     override fun onSupportNavigateUp(): Boolean {
         val intent = Intent(this@MovieDetail, MainActivity::class.java)
         startActivity(intent)
         return true
     }
 
+    // Context Menu
     override fun onCreateContextMenu(menu: ContextMenu, v: View, menuInfo: ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
         menu.add(0, v.id, 0, "Add Review")
 
     }
 
-    // menu item select listener
+    // Context menu item select listener
     override fun onContextItemSelected(item: MenuItem): Boolean {
         if(item.title == "Add Review"){
             val intent = Intent(this@MovieDetail, Rating::class.java)

@@ -12,6 +12,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.example.movierater_intermediate.Movie
 import com.example.movierater_intermediate.databinding.ActivityEditMovieBinding
+import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
 
 class EditMovie : AppCompatActivity() {
@@ -38,16 +39,22 @@ class EditMovie : AppCompatActivity() {
             }
         }
     }
+
+    // Navigate to Movie Detail
     override fun onSupportNavigateUp(): Boolean {
         val intent = Intent(this@EditMovie,MovieDetail::class.java)
         startActivity(intent)
         return true
     }
+
+    // Menu
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.editmovie, menu)
         R.menu.editmovie
         return true
     }
+
+    // Items in Menu select listener
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.save -> {
             validation()
@@ -59,6 +66,8 @@ class EditMovie : AppCompatActivity() {
         }
         else -> super.onOptionsItemSelected(item)
     }
+
+    // Update Movie with info from Movie class
     private fun updateinfo(){
         binding.apply {
             var m = Movie()
@@ -84,6 +93,7 @@ class EditMovie : AppCompatActivity() {
         }
     }
 
+    // Validation
     private fun validation():Boolean{
         var haschk = true
         binding.apply {
@@ -102,9 +112,10 @@ class EditMovie : AppCompatActivity() {
 
             }else{
                 try{
-//
-                    var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
-                    var formattedDate = date.toString().format(formatter)
+                    val pattern = "yyyy-MM-dd"
+                    val simpleDateFormat = SimpleDateFormat(pattern)
+                    val date: String = simpleDateFormat.format(date.toString())
+                    println(date)
                 }catch(e:Exception){
                     date.error = "Date format is wrong (dd-mm-yyyy)"
                     haschk = false
@@ -123,6 +134,8 @@ class EditMovie : AppCompatActivity() {
         }
         return haschk
     }
+
+    // Save info & replace old info
     private fun save(){
         binding.apply {
             val intent = Intent(this@EditMovie,MovieDetail::class.java)
@@ -142,6 +155,7 @@ class EditMovie : AppCompatActivity() {
         }
     }
 
+    // cancel edit
     private fun cancel(){
         binding.apply{
             save()
@@ -150,6 +164,7 @@ class EditMovie : AppCompatActivity() {
         }
     }
 
+    // Checkbox visibility
     private  fun setvisibility() {
         binding.apply {
             val linear: LinearLayout = findViewById(R.id.layout_reasons)

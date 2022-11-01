@@ -23,6 +23,7 @@ class AddMovie : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         binding.apply{
+
             //actionbar
             val actionbar = supportActionBar
             //set actionbar title
@@ -37,15 +38,19 @@ class AddMovie : AppCompatActivity() {
         }
 
     }
+
+    // Navigate back to Main
     override fun onSupportNavigateUp(): Boolean {
         val intent = Intent(this@AddMovie,MainActivity::class.java)
         startActivity(intent)
         return true
     }
+    // Menu
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.addmovie, menu)
         return true
     }
+    // Items in Menu select listener
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.clear -> {
             clearall()
@@ -59,6 +64,8 @@ class AddMovie : AppCompatActivity() {
 
 
     }
+
+    // Validate all fields
     private fun validation():Boolean{
         var haschk = true
         binding.apply {
@@ -99,6 +106,7 @@ class AddMovie : AppCompatActivity() {
         return haschk
     }
 
+    // Clear all inputs
     private fun clearall(){
         binding.apply {
             name.text.clear()
@@ -111,6 +119,8 @@ class AddMovie : AppCompatActivity() {
 
         }
     }
+
+    // Adds movie after validation ( pass data with intent )
     private fun addmovie(){
         binding.apply {
             val intent = Intent(this@AddMovie,MovieDetail::class.java)
@@ -130,6 +140,7 @@ class AddMovie : AppCompatActivity() {
 
         }
     }
+    // Checkbox visibility
     private  fun setvisibility() {
         binding.apply {
             val linear:LinearLayout = findViewById(R.id.layout_reasons)
