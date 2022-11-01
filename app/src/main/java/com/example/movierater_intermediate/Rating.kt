@@ -27,3 +27,4 @@ class Rating : AppCompatActivity() {
         return true
     }
 }
+

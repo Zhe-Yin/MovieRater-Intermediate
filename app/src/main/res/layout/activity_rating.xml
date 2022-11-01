@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Rating"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,11 +24,11 @@
             />
     </RelativeLayout>
 
-<RatingBar
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:numStars="5"
-    />
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        />
 
     <EditText
         android:layout_width="match_parent"

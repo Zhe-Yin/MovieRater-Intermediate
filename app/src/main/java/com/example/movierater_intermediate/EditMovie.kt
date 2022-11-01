@@ -112,15 +112,10 @@ class EditMovie : AppCompatActivity() {
             intent.putExtra("overview",description.text.toString())
             intent.putExtra("language",language.text.toString())
             intent.putExtra("date",date.text.toString())
-            if(below13.isChecked == true){
-                intent.putExtra("below13","No")
-                if(violence.isChecked == true){
-                    intent.putExtra("violence","Violence")
-                }
-                if(languageUsed.isChecked == true){
-                    intent.putExtra("languageused","Languageused")
-                }
-            }
+            intent.putExtra("below13",below13.isChecked.toString())
+            intent.putExtra("violence",violence.isChecked.toString())
+            intent.putExtra("languageused",languageUsed.isChecked.toString())
+
             startActivity(intent)
         }
     }

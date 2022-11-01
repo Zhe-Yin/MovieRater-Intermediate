@@ -27,9 +27,6 @@ class AddMovie : AppCompatActivity() {
             //set back button
             actionbar.setDisplayHomeAsUpEnabled(true)
 
-
-
-            setvisibility()
             below13.setOnClickListener{
                 setvisibility()
             }
@@ -45,7 +42,6 @@ class AddMovie : AppCompatActivity() {
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.addmovie, menu)
-
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
@@ -69,10 +65,12 @@ class AddMovie : AppCompatActivity() {
             description.text.clear()
             date.text.clear()
             below13.isChecked = false
+            languageused.isChecked = false
+            violence.isChecked = false
             setvisibility()
 
         }
-        }
+    }
     private fun addmovie(){
         binding.apply {
             val intent = Intent(this@AddMovie,MovieDetail::class.java)
@@ -84,16 +82,10 @@ class AddMovie : AppCompatActivity() {
             intent.putExtra("overview",description.text.toString())
             intent.putExtra("language",language.text.toString())
             intent.putExtra("date",date.text.toString())
-//            var m = Movie()
-//            val language_grp:RadioGroup = findViewById(R.id.group_language)
-//            val language_btn = language_grp.checkedRadioButtonId
-//            m.addmovie(name.text.toString(),
-//                description.text.toString(),
-//                language_btn.toString(),
-//                date.text.toString(),
-//                below13.isChecked,
-//                violence.isChecked,
-//                languageused.isChecked)
+            intent.putExtra("below13",below13.isChecked.toString())
+            intent.putExtra("violence",violence.isChecked.toString())
+            intent.putExtra("languageused",languageused.isChecked.toString())
+
 
             startActivity(intent)
 

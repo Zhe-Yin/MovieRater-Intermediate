@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.RadioGroup
 import androidx.appcompat.widget.PopupMenu
 import com.example.movierater_intermediate.databinding.ActivityMovieDetailBinding
@@ -24,7 +25,7 @@ class MovieDetail : AppCompatActivity() {
             //set back button
             actionbar.setDisplayHomeAsUpEnabled(true)
 
-            reviews.setOnClickListener{
+            reviews.setOnClickListener {
                 val popup = PopupMenu(this@MovieDetail,reviews)
                 popup.inflate(R.menu.addreview)
 
@@ -38,15 +39,12 @@ class MovieDetail : AppCompatActivity() {
 
                     }
 
-                     true
+                    true
                 })
                 popup.show()
             }
-            val intent = intent
-            title.text = intent.getStringExtra("title")
-            overview.text = intent.getStringExtra("overview")
-            language.text = intent.getStringExtra("language")
-            date.text = intent.getStringExtra("date")
+
+
 //            var m = Movie()
 //
 //            title.setText(m.title)
@@ -61,13 +59,34 @@ class MovieDetail : AppCompatActivity() {
 //            if (m.below13 == true){
 //                below13.isChecked = true
 //            }
-//            if (m.language_used == true){
-//                languageUsed.isChecked == true
-//            }
-//            if(m.violence == true){
-//                violence.isChecked == true
-//            }
 
+
+            val intent = intent
+            title.text = intent.getStringExtra("title")
+            overview.text = intent.getStringExtra("overview")
+            language.text = intent.getStringExtra("language")
+            date.text = intent.getStringExtra("date")
+            below13.text = intent.getStringExtra("below13")
+            languageused.text = intent.getStringExtra("languageused")
+            violence.text = intent.getStringExtra("violence")
+            if(below13.text == "true"){
+                below13.setText("No")
+                if (languageused.text == "true"){
+                    languageused.setText("(Violence)")
+                    language.visibility = View.VISIBLE
+                }else{
+                    languageused.text = ""
+                }
+                if(violence.text == "true"){
+                    violence.setText("(Vulgar)")
+                    violence.visibility = View.VISIBLE
+                }else{
+                    violence.text = ""
+
+                }
+            }else{
+                below13.setText("Yes")
+            }
 
         }
 
@@ -83,6 +102,7 @@ class MovieDetail : AppCompatActivity() {
         startActivity(intent)
         return true
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.edit -> {
             val intent = Intent(this@MovieDetail, EditMovie::class.java)
@@ -94,4 +114,11 @@ class MovieDetail : AppCompatActivity() {
 
     }
 
+
 }
+
+
+
+
+
+
