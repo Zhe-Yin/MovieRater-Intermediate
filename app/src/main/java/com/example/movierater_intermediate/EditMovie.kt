@@ -70,7 +70,15 @@ class EditMovie : AppCompatActivity() {
     // Update Movie with info from Movie class
     private fun updateinfo(){
         binding.apply {
-            var m = Movie()
+            var m = Movie(
+            "Venom",
+           "Overview",
+           "English",
+            "19-10-2018",
+            true,
+            true,
+            false
+            )
 
             name.setText(m.title)
             description.setText(m.desc)
@@ -112,10 +120,9 @@ class EditMovie : AppCompatActivity() {
 
             }else{
                 try{
-                    val pattern = "yyyy-MM-dd"
-                    val simpleDateFormat = SimpleDateFormat(pattern)
-                    val date: String = simpleDateFormat.format(date.toString())
-                    println(date)
+                    val format = SimpleDateFormat("dd-MM-yyyy")
+                    format.setLenient(false);
+                    format.parse(date.text.toString());
                 }catch(e:Exception){
                     date.error = "Date format is wrong (dd-mm-yyyy)"
                     haschk = false
