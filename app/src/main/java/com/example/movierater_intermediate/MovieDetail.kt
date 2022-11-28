@@ -7,6 +7,8 @@ import android.view.ContextMenu.ContextMenuInfo
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.example.movierater_intermediate.databinding.ActivityMovieDetailBinding
 
@@ -57,6 +59,11 @@ class MovieDetail : AppCompatActivity() {
                 below13.setText("Yes")
             }
 
+            if(intent.getStringExtra("check") != "1"){
+                reviews.text = intent.getStringExtra("review")
+                rating.rating = intent.getStringExtra("rating")!!.toFloat()
+            }
+
         }
 
 
@@ -96,8 +103,21 @@ class MovieDetail : AppCompatActivity() {
     // Context menu item select listener
     override fun onContextItemSelected(item: MenuItem): Boolean {
         if(item.title == "Add Review"){
-            val intent = Intent(this@MovieDetail, Rating::class.java)
-            startActivity(intent)
+            binding.apply {
+                val intent = Intent(this@MovieDetail, Rating::class.java)
+
+                intent.putExtra("title",title.text.toString())
+                intent.putExtra("overview",overview.text.toString())
+                intent.putExtra("language",language.text.toString())
+                intent.putExtra("date",date.text.toString())
+                intent.putExtra("below13",below13.toString())
+                intent.putExtra("violence",violence.toString())
+                intent.putExtra("languageused",languageused.toString())
+
+                startActivity(intent)
+            }
+
+
         }
 
         return true

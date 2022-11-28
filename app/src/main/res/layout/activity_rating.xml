@@ -25,12 +25,14 @@
     </RelativeLayout>
 
     <RatingBar
+        android:id="@+id/rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5"
         />
 
     <EditText
+        android:id="@+id/review"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Share your view on the show"/>

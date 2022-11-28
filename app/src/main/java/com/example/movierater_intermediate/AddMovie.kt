@@ -136,6 +136,8 @@ class AddMovie : AppCompatActivity() {
             intent.putExtra("violence",violence.isChecked.toString())
             intent.putExtra("languageused",languageused.isChecked.toString())
 
+            intent.putExtra("check","1")
+
             startActivity(intent)
 
         }

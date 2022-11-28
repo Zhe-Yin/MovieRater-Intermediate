@@ -47,6 +47,12 @@
 android:text="No Review yet. &#xA;Long press here to add review."
         android:textSize="20dp"
         />
+  <RatingBar
+      android:id="@+id/rating"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:numStars="5"
+    android:isIndicator="false"/>
 
     <TextView
         android:layout_width="match_parent"
