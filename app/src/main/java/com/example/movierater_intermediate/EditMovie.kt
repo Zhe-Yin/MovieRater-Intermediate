@@ -175,7 +175,18 @@ class EditMovie : AppCompatActivity() {
     private fun cancel(){
         binding.apply{
             save()
-            val intent = Intent(this@EditMovie, MovieDetail::class.java)
+            val intent1 = Intent(this@EditMovie, MovieDetail::class.java)
+            val intent2 = intent
+
+            intent1.putExtra("title",intent2.getStringExtra("title"))
+            intent1.putExtra("overview",intent2.getStringExtra("overview"))
+            intent1.putExtra("language",intent2.getStringExtra("language"))
+            intent1.putExtra("date",intent2.getStringExtra("date"))
+            intent1.putExtra("below13",intent2.getStringExtra("below13"))
+            intent1.putExtra("violence",intent2.getStringExtra("violence"))
+            intent1.putExtra("languageused",intent2.getStringExtra("languageused"))
+
+            println(intent2.getStringExtra("below13"))
             startActivity(intent)
         }
     }

@@ -43,9 +43,9 @@ class Rating : AppCompatActivity() {
                 intent1.putExtra("overview",intent2.getStringExtra("overview"))
                 intent1.putExtra("language",intent2.getStringExtra("language"))
                 intent1.putExtra("date",intent2.getStringExtra("date"))
-                intent1.putExtra("below13",intent2.getStringExtra("below"))
+                intent1.putExtra("below13",intent2.getStringExtra("below13"))
                 intent1.putExtra("violence",intent2.getStringExtra("violence"))
-                intent1.putExtra("languageused",intent2.getStringExtra("langageused"))
+                intent1.putExtra("languageused",intent2.getStringExtra("languageused"))
 
                 intent1.putExtra("rating",rating.rating.toString())
                 intent1.putExtra("review",review.text.toString())

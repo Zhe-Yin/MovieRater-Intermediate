@@ -85,7 +85,7 @@ class AddMovie : AppCompatActivity() {
             }else{
                 try{
 //
-                    var formatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy")
+                    var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
                     var formattedDate = date.toString().format(formatter)
                 }catch(e:Exception){
                     date.error = "Date format is wrong (dd-mm-yyyy)"
@@ -150,6 +150,8 @@ class AddMovie : AppCompatActivity() {
                 linear.visibility = View.VISIBLE
             }else{
                 linear.visibility = View.INVISIBLE
+                violence.isChecked = false
+                languageused.isChecked = false
             }
         }
     }

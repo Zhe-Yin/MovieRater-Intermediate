@@ -93,13 +93,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Not suitable for all audience"
-        android:checked="true"/>
+       />
 
     <LinearLayout
         android:id="@+id/layout_reasons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:visibility="invisible"
         >
 
         <CheckBox

@@ -38,22 +38,20 @@ class MovieDetail : AppCompatActivity() {
             language.text = intent.getStringExtra("language")
             date.text = intent.getStringExtra("date")
             below13.text = intent.getStringExtra("below13")
-            languageused.text = intent.getStringExtra("languageused")
-            violence.text = intent.getStringExtra("violence")
+            println(intent.getStringExtra("below13"))
             if(below13.text == "true"){
                 below13.setText("No")
-                if (languageused.text == "true"){
-                    languageused.setText("(Violence)")
-                    language.visibility = View.VISIBLE
-                }else{
-                    languageused.text = ""
+                if (intent.getStringExtra("languageused") == "true" && intent.getStringExtra("violence") == "true" ) {
+                    reason.setText("(Violence & Vulgar)")
+                    reason.visibility = View.VISIBLE
                 }
-                if(violence.text == "true"){
-                    violence.setText("(Vulgar)")
-                    violence.visibility = View.VISIBLE
-                }else{
-                    violence.text = ""
-
+                if(intent.getStringExtra("languageused") == "true"){
+                    reason.setText("(Vulgar)")
+                    reason.visibility = View.VISIBLE
+                }
+                if(intent.getStringExtra("violence") == "true"){
+                    reason.setText("(Violence)")
+                    reason.visibility = View.VISIBLE
                 }
             }else{
                 below13.setText("Yes")
@@ -107,17 +105,19 @@ class MovieDetail : AppCompatActivity() {
 
             binding.apply {
 
-                val intent = Intent(this@MovieDetail, Rating::class.java)
+                val intent1 = Intent(this@MovieDetail, Rating::class.java)
+                val intent2 = intent
 
-                intent.putExtra("title",title.text.toString())
-                intent.putExtra("overview",overview.text.toString())
-                intent.putExtra("language",language.text.toString())
-                intent.putExtra("date",date.text.toString())
-                intent.putExtra("below13",below13.toString())
-                intent.putExtra("violence",violence.toString())
-                intent.putExtra("languageused",languageused.toString())
+                intent1.putExtra("title",title.text.toString())
+                intent1.putExtra("overview",overview.text.toString())
+                intent1.putExtra("language",language.text.toString())
+                intent1.putExtra("date",date.text.toString())
+                intent1.putExtra("below13",intent2.getStringExtra("below13"))
+                intent1.putExtra("violence",intent2.getStringExtra("violence"))
+                intent1.putExtra("languageused",intent2.getStringExtra("languageused"))
+                println(intent2.getStringExtra("below13"))
 
-                startActivity(intent)
+                startActivity(intent1)
             }
         }
 
