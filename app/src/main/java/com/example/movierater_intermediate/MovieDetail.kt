@@ -89,6 +89,7 @@ class MovieDetail : AppCompatActivity() {
     // Navigate to Main Page
     override fun onSupportNavigateUp(): Boolean {
         val intent = Intent(this@MovieDetail, MainActivity::class.java)
+
         startActivity(intent)
         return true
     }
@@ -103,7 +104,9 @@ class MovieDetail : AppCompatActivity() {
     // Context menu item select listener
     override fun onContextItemSelected(item: MenuItem): Boolean {
         if(item.title == "Add Review"){
+
             binding.apply {
+
                 val intent = Intent(this@MovieDetail, Rating::class.java)
 
                 intent.putExtra("title",title.text.toString())
@@ -116,8 +119,6 @@ class MovieDetail : AppCompatActivity() {
 
                 startActivity(intent)
             }
-
-
         }
 
         return true
