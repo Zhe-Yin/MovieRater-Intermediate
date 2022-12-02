@@ -187,7 +187,7 @@ class EditMovie : AppCompatActivity() {
             intent1.putExtra("languageused",intent2.getStringExtra("languageused"))
 
             println(intent2.getStringExtra("below13"))
-            startActivity(intent)
+            startActivity(intent1)
         }
     }
 
