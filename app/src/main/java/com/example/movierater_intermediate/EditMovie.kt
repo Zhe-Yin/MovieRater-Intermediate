@@ -174,7 +174,7 @@ class EditMovie : AppCompatActivity() {
     // cancel edit
     private fun cancel(){
         binding.apply{
-            save()
+
             val intent1 = Intent(this@EditMovie, MovieDetail::class.java)
             val intent2 = intent
 

@@ -11,6 +11,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.example.movierater_intermediate.databinding.ActivityAddMovieBinding
 import com.example.movierater_intermediate.Movie
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -85,8 +86,9 @@ class AddMovie : AppCompatActivity() {
             }else{
                 try{
 //
-                    var formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-                    var formattedDate = date.toString().format(formatter)
+                    val format = SimpleDateFormat("dd-MM-yyyy")
+                    format.setLenient(false);
+                    format.parse(date.text.toString());
                 }catch(e:Exception){
                     date.error = "Date format is wrong (dd-mm-yyyy)"
                     haschk = false
