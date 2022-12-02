@@ -14,9 +14,9 @@
         android:title="Cancel"
         app:showAsAction="ifRoom"
         />
-    <item
-        android:id="@+id/clear"
-        android:title="Clear Entries"
-        />
+<!--    <item-->
+<!--        android:id="@+id/clear"-->
+<!--        android:title="Clear Entries"-->
+<!--        />-->
 
 </menu>

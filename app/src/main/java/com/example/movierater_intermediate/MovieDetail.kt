@@ -31,40 +31,46 @@ class MovieDetail : AppCompatActivity() {
             // Long press for Review
             registerForContextMenu(reviews);
 
-            // Info retrieve from EditMovie / AddMovie after intent
-            val intent = intent
-            title.text = intent.getStringExtra("title")
-            overview.text = intent.getStringExtra("overview")
-            language.text = intent.getStringExtra("language")
-            date.text = intent.getStringExtra("date")
-            below13.text = intent.getStringExtra("below13")
-            println(intent.getStringExtra("below13"))
-            if(below13.text == "true"){
-                below13.setText("No")
-                if (intent.getStringExtra("languageused") == "true" && intent.getStringExtra("violence") == "true" ) {
-                    reason.setText("(Violence & Vulgar)")
-                    reason.visibility = View.VISIBLE
-                }
-                if(intent.getStringExtra("languageused") == "true"){
-                    reason.setText("(Vulgar)")
-                    reason.visibility = View.VISIBLE
-                }
-                if(intent.getStringExtra("violence") == "true"){
-                    reason.setText("(Violence)")
-                    reason.visibility = View.VISIBLE
-                }
-            }else{
-                below13.setText("Yes")
-            }
-
-            if(intent.getStringExtra("check") != "1"){
-                reviews.text = intent.getStringExtra("review")
-                rating.rating = intent.getStringExtra("rating")!!.toFloat()
-            }
+            // Populate textview with Info
+            insertInfo()
 
         }
 
 
+    }
+    fun insertInfo(){
+       binding.apply{
+           // Info retrieve from EditMovie / AddMovie after intent
+           val intent = intent
+           title.text = intent.getStringExtra("title")
+           overview.text = intent.getStringExtra("overview")
+           language.text = intent.getStringExtra("language")
+           date.text = intent.getStringExtra("date")
+           below13.text = intent.getStringExtra("below13")
+           println(intent.getStringExtra("below13"))
+           if(below13.text == "true"){
+               below13.setText("No")
+               if (intent.getStringExtra("languageused") == "true" && intent.getStringExtra("violence") == "true" ) {
+                   reason.setText("(Violence & Vulgar)")
+                   reason.visibility = View.VISIBLE
+               }
+               if(intent.getStringExtra("languageused") == "true"){
+                   reason.setText("(Vulgar)")
+                   reason.visibility = View.VISIBLE
+               }
+               if(intent.getStringExtra("violence") == "true"){
+                   reason.setText("(Violence)")
+                   reason.visibility = View.VISIBLE
+               }
+           }else{
+               below13.setText("Yes")
+           }
+
+           if(intent.getStringExtra("check") != "1"){
+               reviews.text = intent.getStringExtra("review")
+               rating.rating = intent.getStringExtra("rating")!!.toFloat()
+           }
+       }
     }
 
     // Menu

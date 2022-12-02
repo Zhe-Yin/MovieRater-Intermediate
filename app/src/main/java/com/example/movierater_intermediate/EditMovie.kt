@@ -83,18 +83,13 @@ class EditMovie : AppCompatActivity() {
             name.setText(m.title)
             description.setText(m.desc)
             date.setText(m.date)
-//            val language_grp = findViewById(R.id.group_language) as RadioGroup
-//            val language_button = language_grp.checkedRadioButtonId
-//            if(m.language == language_button.toString())
-//            {
-//                language_grp.checkedRadioButtonId
-//            }
+
+            // Radio & Checkbox checking
             when(m.language){
                 "English" -> english.isChecked = true
                 "Chinese" -> chinese.isChecked = true
                 "Malay" -> malay.isChecked = true
                 "Tamil" -> tamil.isChecked = true
-
             }
             if (m.below13 == true){
                 below13.isChecked = true
@@ -186,7 +181,9 @@ class EditMovie : AppCompatActivity() {
             intent1.putExtra("violence",intent2.getStringExtra("violence"))
             intent1.putExtra("languageused",intent2.getStringExtra("languageused"))
 
-            println(intent2.getStringExtra("below13"))
+            intent1.putExtra("check","0")
+
+
             startActivity(intent1)
         }
     }
