@@ -1,4 +1,4 @@
-package com.example.movierater_intermediate
+package a201457F.assignment_1.movierater_intermediate
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

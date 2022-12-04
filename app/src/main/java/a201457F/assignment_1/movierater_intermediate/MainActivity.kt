@@ -1,10 +1,11 @@
-package com.example.movierater_intermediate
+package a201457F.assignment_1.movierater_intermediate
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.example.movierater_intermediate.R
 import com.example.movierater_intermediate.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

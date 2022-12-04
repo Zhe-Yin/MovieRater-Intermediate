@@ -1,4 +1,4 @@
-package com.example.movierater_intermediate
+package a201457F.assignment_1.movierater_intermediate
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,13 +7,13 @@ import android.view.ContextMenu.ContextMenuInfo
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
+import com.example.movierater_intermediate.R
 import com.example.movierater_intermediate.databinding.ActivityMovieDetailBinding
 
 
 class MovieDetail : AppCompatActivity() {
+    val RateMovie_Result_Code=1;
     private lateinit var binding: ActivityMovieDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,12 +66,37 @@ class MovieDetail : AppCompatActivity() {
                below13.setText("Yes")
            }
 
-           if(intent.getStringExtra("check") != "1"){
-               reviews.text = intent.getStringExtra("review")
-               rating.rating = intent.getStringExtra("rating")!!.toFloat()
-           }
+
        }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RateMovie_Result_Code)
+        {
+            if(resultCode == RESULT_OK) {
+                val rate = data?.getFloatExtra("rating",0F)
+                val review = data?.getStringExtra("review")
+                // In case user only enter review or rating
+                binding.apply {
+                  if(rate != 0F ){
+                      if (rate != null) {
+                          rating.rating = rate
+                          if(review?.isEmpty() == true){
+                              reviews.text = ""
+                          }else{
+                              reviews.text = review
+                          }
+
+                      }
+
+                  }
+                }
+            }
+        }
+    }
+
+
 
     // Menu
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -83,8 +108,19 @@ class MovieDetail : AppCompatActivity() {
     // Items in Menu select listener
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.edit -> {
-            val intent = Intent(this@MovieDetail, EditMovie::class.java)
-            startActivity(intent)
+            binding.apply {
+                val intent1 = Intent(this@MovieDetail, EditMovie::class.java)
+                val intent = intent
+                intent1.putExtra("title",title.text.toString())
+                intent1.putExtra("overview",overview.text.toString())
+                intent1.putExtra("language",language.text.toString())
+                intent1.putExtra("date",date.text.toString())
+                intent1.putExtra("below13",below13.text.toString())
+                intent1.putExtra("violence",intent.getStringExtra("violence"))
+                intent1.putExtra("languageused",intent.getStringExtra("languageused"))
+                startActivity(intent1)
+            }
+
             true
         }
         else -> super.onOptionsItemSelected(item)
@@ -92,9 +128,12 @@ class MovieDetail : AppCompatActivity() {
 
     // Navigate to Main Page
     override fun onSupportNavigateUp(): Boolean {
-        val intent = Intent(this@MovieDetail, MainActivity::class.java)
+        binding.apply {
+            val intent1 = Intent(this@MovieDetail, MainActivity::class.java)
 
-        startActivity(intent)
+            startActivity(intent1)
+        }
+
         return true
     }
 
@@ -123,8 +162,10 @@ class MovieDetail : AppCompatActivity() {
                 intent1.putExtra("languageused",intent2.getStringExtra("languageused"))
                 println(intent2.getStringExtra("below13"))
 
-                startActivity(intent1)
+                startActivityForResult(intent1,RateMovie_Result_Code)
+
             }
+
         }
 
         return true

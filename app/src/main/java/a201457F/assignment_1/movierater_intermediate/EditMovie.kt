@@ -1,4 +1,4 @@
-package com.example.movierater_intermediate
+package a201457F.assignment_1.movierater_intermediate
 
 import android.content.Intent
 
@@ -10,10 +10,9 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import com.example.movierater_intermediate.Movie
+import com.example.movierater_intermediate.R
 import com.example.movierater_intermediate.databinding.ActivityEditMovieBinding
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 
 class EditMovie : AppCompatActivity() {
     private lateinit var binding: ActivityEditMovieBinding
@@ -42,8 +41,22 @@ class EditMovie : AppCompatActivity() {
 
     // Navigate to Movie Detail
     override fun onSupportNavigateUp(): Boolean {
-        val intent = Intent(this@EditMovie,MovieDetail::class.java)
-        startActivity(intent)
+        binding.apply{
+
+            val intent1 = Intent(this@EditMovie, MovieDetail::class.java)
+            val intent2 = intent
+
+            intent1.putExtra("title",intent2.getStringExtra("title"))
+            intent1.putExtra("overview",intent2.getStringExtra("overview"))
+            intent1.putExtra("language",intent2.getStringExtra("language"))
+            intent1.putExtra("date",intent2.getStringExtra("date"))
+            intent1.putExtra("below13",intent2.getStringExtra("below13"))
+            intent1.putExtra("violence",intent2.getStringExtra("violence"))
+            intent1.putExtra("languageused",intent2.getStringExtra("languageused"))
+
+
+            startActivity(intent1)
+        }
         return true
     }
 
@@ -147,7 +160,7 @@ class EditMovie : AppCompatActivity() {
     // Save info & replace old info
     private fun save(){
         binding.apply {
-            val intent = Intent(this@EditMovie,MovieDetail::class.java)
+            val intent = Intent(this@EditMovie, MovieDetail::class.java)
             val language_grp:RadioGroup = findViewById(R.id.group_language)
             val language_button = language_grp.checkedRadioButtonId
             val language = findViewById(language_button) as RadioButton
@@ -160,7 +173,6 @@ class EditMovie : AppCompatActivity() {
             intent.putExtra("violence",violence.isChecked.toString())
             intent.putExtra("languageused",languageused.isChecked.toString())
 
-            intent.putExtra("check","1")
 
             startActivity(intent)
         }
@@ -180,8 +192,6 @@ class EditMovie : AppCompatActivity() {
             intent1.putExtra("below13",intent2.getStringExtra("below13"))
             intent1.putExtra("violence",intent2.getStringExtra("violence"))
             intent1.putExtra("languageused",intent2.getStringExtra("languageused"))
-
-            intent1.putExtra("check","0")
 
 
             startActivity(intent1)

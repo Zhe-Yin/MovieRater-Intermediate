@@ -14,7 +14,7 @@
         android:theme="@style/Theme.MovieRater_Intermediate"
         tools:targetApi="31">
         <activity
-            android:name=".Rating"
+            android:name="a201457F.assignment_1.movierater_intermediate.Rating"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EditMovie"
+            android:name="a201457F.assignment_1.movierater_intermediate.EditMovie"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddMovie"
+            android:name="a201457F.assignment_1.movierater_intermediate.AddMovie"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MovieDetail"
+            android:name="a201457F.assignment_1.movierater_intermediate.MovieDetail"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="a201457F.assignment_1.movierater_intermediate.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

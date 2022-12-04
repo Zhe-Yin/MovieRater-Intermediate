@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MovieDetail"
+    tools:context="a201457F.assignment_1.movierater_intermediate.MovieDetail"
     android:orientation="vertical"
     android:padding="8dp">
 <ImageView
@@ -41,18 +41,19 @@
         android:layout_height="wrap_content"
         android:text="Reviews"
         />
+  <RatingBar
+      android:id="@+id/rating"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:numStars="5"
+      android:isIndicator="true"/>
     <TextView android:id="@+id/reviews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 android:text="No Review yet. &#xA;Long press here to add review."
         android:textSize="20dp"
         />
-  <RatingBar
-      android:id="@+id/rating"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:numStars="5"
-    android:isIndicator="false"/>
+
 
     <TextView
         android:layout_width="match_parent"

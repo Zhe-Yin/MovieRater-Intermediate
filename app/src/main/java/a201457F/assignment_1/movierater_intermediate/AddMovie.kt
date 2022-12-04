@@ -1,4 +1,4 @@
-package com.example.movierater_intermediate
+package a201457F.assignment_1.movierater_intermediate
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,11 +10,8 @@ import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import com.example.movierater_intermediate.databinding.ActivityAddMovieBinding
-import com.example.movierater_intermediate.Movie
+import com.example.movierater_intermediate.R
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 class AddMovie : AppCompatActivity() {
     private lateinit var binding: ActivityAddMovieBinding
@@ -42,7 +39,7 @@ class AddMovie : AppCompatActivity() {
 
     // Navigate back to Main
     override fun onSupportNavigateUp(): Boolean {
-        val intent = Intent(this@AddMovie,MainActivity::class.java)
+        val intent = Intent(this@AddMovie, MainActivity::class.java)
         startActivity(intent)
         return true
     }
@@ -125,7 +122,7 @@ class AddMovie : AppCompatActivity() {
     // Adds movie after validation ( pass data with intent )
     private fun addmovie(){
         binding.apply {
-            val intent = Intent(this@AddMovie,MovieDetail::class.java)
+            val intent = Intent(this@AddMovie, MovieDetail::class.java)
             val language_grp:RadioGroup = findViewById(R.id.group_language)
             val language_button = language_grp.checkedRadioButtonId
             val language = findViewById(language_button) as RadioButton
@@ -138,7 +135,7 @@ class AddMovie : AppCompatActivity() {
             intent.putExtra("violence",violence.isChecked.toString())
             intent.putExtra("languageused",languageused.isChecked.toString())
 
-            intent.putExtra("check","1")
+
 
             startActivity(intent)
 
